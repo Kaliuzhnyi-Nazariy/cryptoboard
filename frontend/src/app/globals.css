@@ -1,0 +1,139 @@
+@import url("https://fonts.cdnfonts.com/css/yukita-sans");
+@import "tailwindcss";
+
+:root {
+  /* --background: #ffffff;
+  --foreground: #171717; */
+
+  /* PRIMARY */
+  --primary100: #2752e7;
+  --primary80: #5275ec;
+  --primary60: #7d97f1;
+  --primary40: #d0dbff;
+  --primary20: #f5f8fe;
+
+  /* BASE */
+
+  --black100: #2c3131;
+  --black80: #626262;
+  --black60: #a9a9a9;
+  --black40: #cacaca;
+  --black20: #e3e3e3;
+  --black0: #ffffff;
+
+  /* ACCENT */
+
+  --success100: #53d258;
+  --success80: #75db79;
+  --success60: #98e49b;
+  --success40: #baedbc;
+  --success20: #ddf6de;
+
+  --error100: #e25c5c;
+  --error80: #e87d7d;
+  --error60: #ee9d9d;
+  --error40: #f3bebe;
+  --error20: #f9dede;
+}
+
+h1 {
+  line-height: 125%;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+h2 {
+  line-height: 125%;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+h3 {
+  line-height: 125%;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+h4 {
+  line-height: 130%;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+h5 {
+  line-height: 135%;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.delts {
+  font-family: "Inter";
+  line-height: 130%;
+  font-size: 20px;
+}
+
+.elts {
+  font-family: "Inter";
+  line-height: 145%;
+  font-size: 18px;
+}
+
+.lts {
+  font-family: "Inter";
+  line-height: 150%;
+  font-size: 16px;
+}
+
+.mts {
+  font-family: "Inter";
+  line-height: 155%;
+  font-size: 14px;
+}
+
+.sts {
+  font-family: "Inter";
+  line-height: 165%;
+  font-size: 12px;
+}
+
+.ests {
+  font-family: "Inter";
+  line-height: 165%;
+  font-size: 10px;
+}
+
+/* @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+/* @font-face {
+  font-family: "Yukita Sans";
+  src: url("https://db.onlinewebfonts.com/t/519984bebbf17ae124db2a01ced1dce1.woff2")
+    format("woff2");
+}
+
+body {
+  font-family: "Yukita Sans", Arial, Helvetica, sans-serif;
+} */
+
+@font-face {
+  font-family: "Yukita Sans";
+  src: url("https://db.onlinewebfonts.com/t/519984bebbf17ae124db2a01ced1dce1.woff2")
+    format("woff2");
+}
+
+body {
+  font-family: "Yukita Sans", Arial, Helvetica, sans-serif;
+  width: 100%;
+  min-height: 100vh;
+}
