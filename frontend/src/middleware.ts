@@ -1,7 +1,12 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import jwt from "jsonwebtoken";
 
-const protectedRoutes = ["/cryptoboard"];
+const protectedRoutes = [
+  "/cryptoboard",
+  "/cryptoboard/update",
+  "/cryptoboard/coins",
+];
 const publicRoutes = ["/auth/signin", "/auth/signup", "/"];
 
 export function middleware(req: NextRequest) {
@@ -15,7 +20,25 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/auth/signin", req.url));
   }
 
-  if (isPublicRoute && token && path !== "/") {
+  let isExpired = false;
+
+  if (token) {
+    try {
+      const decoded = jwt.decode(token) as { exp?: number };
+      if (decoded?.exp && decoded.exp * 1000 < Date.now()) {
+        isExpired = true;
+      }
+    } catch (error) {
+      console.error("Invalid token:", error);
+      isExpired = true;
+    }
+  }
+
+  if (isProtectedRoute && isExpired) {
+    return NextResponse.redirect(new URL("/auth/signin", req.url));
+  }
+
+  if (isPublicRoute && token && !isExpired && path !== "/") {
     return NextResponse.redirect(new URL("/cryptoboard", req.url));
   }
 
@@ -27,5 +50,6 @@ export const config = {
     "/((?!api|_next/static|_next/image|.*\\.png$).*)",
     "/auth/:path*",
     "/cryptoboard",
+    "/cryptoboard/:path*",
   ],
 };
