@@ -1,5 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/yukita-sans");
 @import "tailwindcss";
+@plugin "daisyui";
 
 :root {
   /* --background: #ffffff;
