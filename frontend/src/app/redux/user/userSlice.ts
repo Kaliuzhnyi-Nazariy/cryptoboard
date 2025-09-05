@@ -66,7 +66,7 @@ const userSlice = createSlice({
         getMe.fulfilled,
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
-          state.isLoggedIn = false;
+          state.isLoggedIn = true;
           state.user = action.payload;
         }
       )
