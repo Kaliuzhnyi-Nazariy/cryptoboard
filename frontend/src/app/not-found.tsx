@@ -9,7 +9,7 @@ const NotFound = () => {
       NotFound
       <button
         onClick={() => {
-          redirect("/");
+          redirect("/cryptoboard");
         }}
         className="cursor-pointer px-2 py-1"
       >
