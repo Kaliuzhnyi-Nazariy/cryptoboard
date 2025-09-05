@@ -30,6 +30,9 @@ const Form = () => {
     );
 
     console.log(res);
+    if (res.meta.requestStatus === "fulfilled") {
+      router.push("/cryptoboard");
+    }
 
     //   const response = await fetch("/api/auth/login", {
     //     method: "POST",
