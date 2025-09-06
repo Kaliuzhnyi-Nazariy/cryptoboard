@@ -4,6 +4,7 @@ import User from "../models/user";
 import bcrypt from "bcryptjs";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { ctrlWrapper } from "../helper";
+import gravatar from "gravatar";
 
 const { SECRET_JWT } = process.env;
 
@@ -28,6 +29,10 @@ const signUp = async (req: Request<{}, {}, SignUpUser>, res: Response) => {
 
   if (!addNewUser) throw new Error("Sth went wrong during signing up");
 
+  // const avatar = gravatar.url(email, {});
+
+  const avatar = `https://www.gravatar.com/avatar/${email}?s=40px&d=mp`;
+
   const payload = {
     id: addNewUser.id,
   };
@@ -38,7 +43,7 @@ const signUp = async (req: Request<{}, {}, SignUpUser>, res: Response) => {
 
   const updUser = await User.findByIdAndUpdate(
     addNewUser.id,
-    { token },
+    { token, avatar },
     { new: true }
   ).select("-password");
 

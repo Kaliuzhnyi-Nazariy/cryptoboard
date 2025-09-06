@@ -7,6 +7,7 @@ export interface IUser {
   token: string | null;
   listOfFav?: number[];
   password: string;
+  avatar: string;
 }
 
 export interface SignUpUser extends IUser {

@@ -10,9 +10,9 @@ const getMe = (req: UserRequest, res: Response) => {
 
   if (!data) throw new Error("unauthorized");
 
-  const { email, name } = data;
+  const { email, name, avatar } = data;
 
-  res.status(200).json({ email, name });
+  res.status(200).json({ email, name, avatar });
 };
 
 const updateUser = async (req: Request<{}, {}, UpdUser>, res: Response) => {

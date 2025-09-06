@@ -7,6 +7,7 @@ const userSchema = new Schema(
     name: { type: String, require: true },
     password: { type: String, require: [true, "Setting password is obvious!"] },
     token: { type: String || null, default: null },
+    avatar: { type: String },
   },
   { versionKey: false, timestamps: true }
 );
