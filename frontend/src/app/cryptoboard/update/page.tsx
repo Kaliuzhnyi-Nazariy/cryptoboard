@@ -1,7 +1,13 @@
 import React from "react";
+import UpdForm from "./UpdForm";
 
 const Page = () => {
-  return <p>Page update in procces!</p>;
+  return (
+    <div className="">
+      <p>Page update in procces!</p>
+      <UpdForm />
+    </div>
+  );
 };
 
 export default Page;
