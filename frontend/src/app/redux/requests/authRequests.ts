@@ -14,7 +14,6 @@ export const signup = createAsyncThunk<
     return response.data;
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
-      console.log(error);
       return rejectWithValue({
         message: error.response?.data?.message || "Signup failed",
       });
