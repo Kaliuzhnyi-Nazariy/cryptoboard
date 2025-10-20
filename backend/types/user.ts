@@ -1,13 +1,17 @@
 import mongoose from "mongoose";
 
 export interface IUser {
-  id: mongoose.ObjectId;
+  id: mongoose.ObjectId | mongoose.Types.ObjectId;
   email: string;
   name: string;
   token: string | null;
   listOfFav?: number[];
   password: string;
-  avatar: string;
+  avatar: {
+    link: string;
+    name: string;
+  };
+  [x: string]: any;
 }
 
 export interface SignUpUser extends IUser {
@@ -24,4 +28,10 @@ export interface UserRequest extends Request {
   user: IUser | null;
 }
 
-export type UpdUser = Pick<IUser, "email" | "name" | "password">;
+// export type UpdUser = Pick<IUser, "email" | "name" | "password">;
+export type UpdUser = {
+  email: string;
+  name: string;
+  password: string;
+  avatar: string | File;
+};

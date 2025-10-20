@@ -13,9 +13,14 @@ const signUp = async (req: Request<{}, {}, SignUpUser>, res: Response) => {
 
   const isUser = await User.findOne({ email });
 
-  if (isUser) throw new Error("This email is already in use!");
+  if (isUser) {
+    return res.status(409).json({ message: "This email is already in use!" });
+  }
 
-  if (password !== confirmPassword) throw new Error("Passwords do not match!");
+  // if (password !== confirmPassword) throw new Error("Passwords do not match!");
+
+  if (password !== confirmPassword)
+    return res.status(400).json({ message: "Passwords do not match!" });
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -43,7 +48,7 @@ const signUp = async (req: Request<{}, {}, SignUpUser>, res: Response) => {
 
   const updUser = await User.findByIdAndUpdate(
     addNewUser.id,
-    { token, avatar },
+    { token, avatar: { link: avatar } },
     { new: true }
   ).select("-password");
 
@@ -62,11 +67,15 @@ const signIn = async (req: Request<{}, {}, SignInUser>, res: Response) => {
 
   const isUser = await User.findOne<IUser>({ email });
 
-  if (!isUser) throw new Error("Email or password is wrong!");
+  if (!isUser) {
+    return res.status(400).json({ message: "Email or password is wrong!" });
+  }
 
   const isPasswordMatch = await bcrypt.compare(password, isUser.password);
 
-  if (!isPasswordMatch) throw new Error("Email or password is wrong!");
+  if (!isPasswordMatch) {
+    return res.status(400).json({ message: "Email or password is wrong!" });
+  }
 
   const payload = {
     id: isUser.id,
