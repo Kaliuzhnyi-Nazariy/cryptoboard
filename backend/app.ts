@@ -4,7 +4,6 @@ import authRoute from "./route/auth";
 import userRoute from "./route/user";
 import walletRoute from "./route/wallet";
 import transactionRoute from "./route/transaction";
-import stripeRoute from "./route/stripe";
 import bodyParser from "body-parser";
 
 const app = express();
@@ -33,7 +32,5 @@ app.use("/api/transaction", transactionRoute);
 app.get("/api/operation", (req, res) => {
   res.status(200).json({ message: "Hello!" });
 });
-
-app.use("/api", stripeRoute);
 
 export default app;
