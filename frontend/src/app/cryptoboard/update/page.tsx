@@ -3,8 +3,8 @@ import UpdForm from "./UpdForm";
 
 const Page = () => {
   return (
-    <div className="">
-      <p>Page update in procces!</p>
+    <div className="w-full h-full flex justify-center items-center">
+      {/* <p>Page update in procces!</p> */}
       <UpdForm />
     </div>
   );
