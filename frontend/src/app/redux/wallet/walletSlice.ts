@@ -28,8 +28,8 @@ const handleReject = (
   state: WalletInitialState,
   action: PayloadAction<{ message: string } | undefined>
 ) => {
-  console.log({ action });
-  console.log(action.payload?.message);
+  // console.log({ action });
+  // console.log(action.payload?.message);
   state.error =
     action.payload?.message || "Something went wrong with wallet operation!";
   state.loading = false;
@@ -64,7 +64,7 @@ const walletSlice = createSlice({
         topupTransaction.fulfilled,
         (state: WalletInitialState, action: PayloadAction<Transaction>) => {
           state.loading = false;
-          console.log("action in fulfilled: ", action);
+          // console.log("action in fulfilled: ", action);
           if (state.wallet)
             state.wallet.balance += Number(action.payload.amount);
         }

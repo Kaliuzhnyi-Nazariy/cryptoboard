@@ -15,7 +15,7 @@ import { token } from "@/app/redux/user/userType";
 const TokenList = () => {
   const userTokensList = useSelector(userTokens);
 
-  console.log({ userTokensList });
+  // console.log({ userTokensList });
 
   const tokensMarket = useContext(tokenContext);
 

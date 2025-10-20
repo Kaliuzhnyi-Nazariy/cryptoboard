@@ -116,7 +116,7 @@ const userSlice = createSlice({
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
           state.isLoggedIn = true;
-          console.log(action.payload);
+          // console.log(action.payload);
 
           state.user = {
             ...action.payload,

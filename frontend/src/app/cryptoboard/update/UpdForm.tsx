@@ -49,11 +49,11 @@ const UpdForm = () => {
     if (!usernameForm || !useremailForm || !useravatarForm || !userpasswordForm)
       return;
 
-    if (useravatarForm) {
-      console.log("Avatar is a File:", useravatarForm);
-    } else {
-      console.log("No file selected");
-    }
+    // if (useravatarForm) {
+    //   console.log("Avatar is a File:", useravatarForm);
+    // } else {
+    //   console.log("No file selected");
+    // }
 
     dispatch(updateUser(formData));
   }

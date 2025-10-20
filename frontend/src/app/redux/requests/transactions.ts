@@ -85,7 +85,7 @@ export const withdrawTransaction = createAsyncThunk<
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
-      console.log("error", { error });
+      // console.log("error", { error });
 
       return rejectWithValue({
         message: error.response?.data?.message || "Transaction failed",

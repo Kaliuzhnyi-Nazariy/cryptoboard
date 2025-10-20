@@ -41,7 +41,7 @@ export const updateUser = createAsyncThunk<
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
-      console.log(error);
+      // console.log(error);
       return rejectWithValue({
         message: error.response?.data?.message || "Signup failed",
       });

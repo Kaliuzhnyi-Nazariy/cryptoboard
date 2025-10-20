@@ -17,8 +17,8 @@ const LogoutButton = () => {
             localStorage.setItem("page", "dashboard");
           })
           .catch((err: any) => {
-            console.log(err);
-            toast.error("Successfully logged out!");
+            // console.log(err);
+            toast.error("Logging out went wrong!");
           });
       }}
       className="cursor-pointer flex pl-6 items-center gap-3 w-full h-full hover:text-[var(--error100)] rounded-[10px] hover:bg-[var(--error20)] "
