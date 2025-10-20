@@ -26,7 +26,6 @@ export const getCrypto = async () => {
 };
 
 export const getPreviewCrypto = async () => {
-  console.log(process.env.CRYPTO_API_KEY);
   const res = await axios.get(
     `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=4&page=1&sparkline=false&price_change_percentage=24h`,
     {
@@ -39,7 +38,6 @@ export const getPreviewCrypto = async () => {
 };
 
 export const getHundredCrypto = async (page: number) => {
-  console.log(process.env.CRYPTO_API_KEY);
   const res = await axios.get(
     `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=${page}&sparkline=false&price_change_percentage=24h`,
     {
