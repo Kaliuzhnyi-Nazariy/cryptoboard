@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import { api } from "./api";
 import { IUser, SigninUser, SignupUser } from "@/app/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
