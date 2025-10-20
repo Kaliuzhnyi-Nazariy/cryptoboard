@@ -5,6 +5,9 @@ import { ReduxProvider } from "./auth/ReduxProvider";
 import GetUserLayout from "./Layouts/GetUserLayout";
 import QueryLayout from "./Layouts/QueryLayout";
 import NavLayout from "./Layouts/NavLayout";
+import ContextLayout from "./Layouts/ContextLayout";
+import { Toaster } from "react-hot-toast";
+import { yukitaSans } from "./localFont";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,12 +32,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--black20)] text-[var(--black100)] flex flex-col`}
+        className={`${yukitaSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--black20)] text-[var(--black100)] flex flex-col min-[768px]:overflow-y-hidden`}
       >
         <ReduxProvider>
           <GetUserLayout>
             <QueryLayout>
-              <NavLayout>{children}</NavLayout>
+              <ContextLayout>
+                <NavLayout>
+                  {children}
+                  <Toaster />
+                </NavLayout>
+              </ContextLayout>
             </QueryLayout>
           </GetUserLayout>
         </ReduxProvider>
