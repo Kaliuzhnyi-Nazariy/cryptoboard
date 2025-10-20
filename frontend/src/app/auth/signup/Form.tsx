@@ -5,6 +5,10 @@ import InputAuth from "../components/InputAuth";
 import { useAppDispatch } from "@/app/redux/hooks";
 import { signup } from "@/app/redux/requests/authRequests";
 import { SignupUser } from "@/app/types";
+import { Eye, EyeClosed } from "lucide-react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { userError } from "@/app/redux/selectors";
 
 const Form = () => {
   const router = useRouter();
@@ -13,6 +17,8 @@ const Form = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const error = useSelector(userError);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -23,28 +29,21 @@ const Form = () => {
     const password = formData.get("password");
     const confirmPassword = formData.get("confirmPassword");
 
-    console.log({ email, name, password, confirmPassword });
+    // console.log({ email, name, password, confirmPassword });
 
     const res = await dispatch(
       signup({ email, name, password, confirmPassword } as SignupUser)
     );
 
-    console.log(res);
+    // console.log(res);
     if (res.meta.requestStatus === "fulfilled") {
       router.push("/cryptoboard");
+      toast.success("Signed up successfully!");
     }
 
-    //   const response = await fetch("/api/auth/login", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ email, password }),
-    //   });
-
-    //   if (response.ok) {
-    //     router.push("/profile");
-    //   } else {
-    //     // Handle errors
-    //   }
+    if (res.meta.requestStatus === "rejected") {
+      toast.error(error);
+    }
   }
 
   return (
@@ -54,8 +53,20 @@ const Form = () => {
         onSubmit={handleSubmit}
         className="gap-3 flex flex-col w-full min-[768px]:gap-5"
       >
-        <InputAuth type="email" name="email" placeholder="Email" required />
-        <InputAuth type="text" name="name" placeholder="Name" required />
+        <InputAuth
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={localStorage.getItem("address") || ""}
+          required
+        />
+        <InputAuth
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={localStorage.getItem("address") || ""}
+          required
+        />
         <div className="relative min-[768px]:w-[500px] min-[768px]:mx-auto min-[1440px]:w-[700px] ">
           <InputAuth
             type={showPassword ? "text" : "password"}
@@ -65,9 +76,11 @@ const Form = () => {
           />
           <button
             type="button"
-            className="absolute top-1/2 right-1 w-5 h-5 bg-red-500 -translate-1/2"
+            className="absolute top-1/2 right-1 -translate-1/2"
             onClick={() => setShowPassword(!showPassword)}
-          ></button>
+          >
+            {showPassword ? <EyeClosed /> : <Eye />}
+          </button>
         </div>
         <div className="relative min-[768px]:w-[500px] min-[768px]:mx-auto min-[1440px]:w-[700px] ">
           <InputAuth
@@ -78,9 +91,11 @@ const Form = () => {
           />
           <button
             type="button"
-            className="absolute top-1/2 right-1 w-5 h-5 bg-red-500 -translate-1/2"
+            className="absolute top-1/2 right-1 -translate-1/2"
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          ></button>
+          >
+            {showConfirmPassword ? <EyeClosed /> : <Eye />}
+          </button>
         </div>
         <button
           type="submit"
