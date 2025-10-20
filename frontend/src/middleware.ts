@@ -6,6 +6,11 @@ const protectedRoutes = [
   "/cryptoboard",
   "/cryptoboard/update",
   "/cryptoboard/coins",
+  "/cryptoboard/wallets",
+  "/cryptoboard/analytics",
+  "/cryptoboard/myportfolio",
+  "/settings",
+  "/help",
 ];
 const publicRoutes = ["/auth/signin", "/auth/signup", "/"];
 
@@ -34,6 +39,9 @@ export function middleware(req: NextRequest) {
     }
   }
 
+  // console.log({ isProtectedRoute });
+  // console.log({ isPublicRoute });
+
   if (isProtectedRoute && isExpired) {
     return NextResponse.redirect(new URL("/auth/signin", req.url));
   }
@@ -51,5 +59,7 @@ export const config = {
     "/auth/:path*",
     "/cryptoboard",
     "/cryptoboard/:path*",
+    "/settings",
+    "/help",
   ],
 };
