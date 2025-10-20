@@ -17,7 +17,7 @@ const GetUserLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {loading ? (
-        <div className="w-full min-h-screen flex items-center justify-center">
+        <div className="w-full  flex items-center justify-center">
           Loadnig...
         </div>
       ) : (

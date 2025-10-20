@@ -8,10 +8,16 @@ const protectedRoutes = [
   "/cryptoboard",
   "/cryptoboard/update",
   "/cryptoboard/coins",
+  "/cryptoboard/wallets",
+  "/cryptoboard/analytics",
+  "/cryptoboard/myportfolio",
+  "/settings",
+  "/help",
 ];
 
 const NavLayout = ({ children }: { children: React.ReactNode }) => {
   const isUserLoggedIn = useSelector(isLoggedIn);
+  // console.log({ isUserLoggedIn });
   const path = usePathname();
   const isProtectedRoute = protectedRoutes.includes(path);
 
