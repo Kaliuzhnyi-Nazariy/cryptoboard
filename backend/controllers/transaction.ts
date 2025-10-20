@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from "express-serve-static-core";
 import { UserRequest } from "../types/user";
 import mongoose from "mongoose";
 import { JwtPayload } from "jsonwebtoken";

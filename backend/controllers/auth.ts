@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from "express-serve-static-core";
 import { IUser, SignInUser, SignUpUser, UserRequest } from "../types/user";
 import User from "../models/user";
 import bcrypt from "bcryptjs";

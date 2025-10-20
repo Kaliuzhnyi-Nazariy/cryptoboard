@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from "express-serve-static-core";
 import { ctrlWrapper, postPhoto } from "../helper";
 import { IUser, UpdUser, UserRequest } from "../types/user";
 import { JwtPayload } from "jsonwebtoken";
