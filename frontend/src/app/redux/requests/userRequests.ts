@@ -2,6 +2,9 @@ import { IUser, UpdUser } from "@/app/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "./api";
 import axios from "axios";
+import { token } from "../user/userType";
+
+axios.defaults.baseURL = "http://localhost:3001/api";
 
 export const getMe = createAsyncThunk<
   IUser,
@@ -13,7 +16,7 @@ export const getMe = createAsyncThunk<
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
-      console.log(error);
+      localStorage.removeItem("page");
       return rejectWithValue({
         message: error.response?.data?.message || "Signup failed",
       });
@@ -24,11 +27,17 @@ export const getMe = createAsyncThunk<
 
 export const updateUser = createAsyncThunk<
   IUser,
-  UpdUser,
+  UpdUser | FormData,
   { rejectValue: { message: string } }
 >("/user/update", async (userData, { rejectWithValue }) => {
   try {
-    const { data } = await api.put<IUser>("/user/update", userData);
+    // console.log({ userData });
+    // console.log(userData?.avatar);
+    const { data } = await axios.put<IUser>("/user/update", userData, {
+      withCredentials: true,
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    // console.log(data);
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
@@ -51,7 +60,24 @@ export const deleteUser = createAsyncThunk<
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
-      console.log(error);
+      return rejectWithValue({
+        message: error.response?.data?.message || "Signup failed",
+      });
+    }
+    return rejectWithValue({ message: "Unexpected error occurred" });
+  }
+});
+
+export const getTokens = createAsyncThunk<
+  { tokens: token[] },
+  void,
+  { rejectValue: { message: string } }
+>("/user/tokens", async (_, { rejectWithValue }) => {
+  try {
+    const { data } = await api.get("/user/tokens");
+    return data;
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
       return rejectWithValue({
         message: error.response?.data?.message || "Signup failed",
       });
