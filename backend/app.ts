@@ -2,27 +2,38 @@ import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import authRoute from "./route/auth";
 import userRoute from "./route/user";
+import walletRoute from "./route/wallet";
+import transactionRoute from "./route/transaction";
+import stripeRoute from "./route/stripe";
+import bodyParser from "body-parser";
 
 const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "*"],
     credentials: true,
   })
 );
 
 app.use(express.json());
 
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use("/api/auth", authRoute);
 
 app.use("/api/user", userRoute);
 
-// app.use("*", (err: Error, req: Request, res: Response, next: NextFunction) => {
-//   const status = (err as any).status || 500;
-//   const message = err.message || "Server Error";
+app.use("/api/wallet", walletRoute);
 
-//   res.status(status).json({ message });
-// });
+app.use("/api/transaction", transactionRoute);
+
+app.get("/api/operation", (req, res) => {
+  res.status(200).json({ message: "Hello!" });
+});
+
+app.use("/api", stripeRoute);
 
 export default app;
