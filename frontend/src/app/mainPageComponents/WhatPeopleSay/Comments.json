@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Tomoko Sato",
+    "job": "Project Manager",
+    "comment": "It’s good, but I’d like to see more integrations with other project tools. Still, very solid overall.",
+    "photo": "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1176"
+  },
+  {
+    "name": "Aisha Karim",
+    "job": "HR Specialist",
+    "comment": "The analytics features are incredibly useful for tracking team engagement and identifying trends over time. The ability to filter and segment data helps me pinpoint specific areas for improvement. I do wish the interface allowed for a bit more customization, but the overall usability is excellent. It’s become an essential tool in our HR toolkit.",
+    "photo": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Lucas Meyer",
+    "job": "UX Designer",
+    "comment": "Beautiful interface and smooth interactions. A few more accessibility options would make it perfect.",
+    "photo": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG1hbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600"
+  },
+  {
+    "name": "Priya Nair",
+    "job": "Software Engineer",
+    "comment": "Performance has improved a lot! I appreciate the recent updates and cleaner codebase.",
+    "photo": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Emily Zhang",
+    "job": "Marketing Strategist",
+    "comment": "The new dashboard is intuitive. I love how easy it is to visualize campaign performance.",
+    "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Noah Williams",
+    "job": "Product Designer",
+    "comment": "A fantastic update overall! The attention to detail in the user flow is evident.",
+    "photo": "https://plus.unsplash.com/premium_photo-1664533227571-cb18551cac82?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fG1hbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600"
+  },
+  {
+    "name": "Jonathan Miller",
+    "job": "Business Analyst",
+    "comment": "The depth of insight this platform provides is remarkable. The data visualizations make it so easy to spot patterns and opportunities. I’ve used many analytic tools before, but this one strikes the best balance between simplicity and power. It has definitely improved how I communicate findings to leadership.",
+    "photo": "https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Marcus Lee",
+    "job": "Front-End Developer",
+    "comment": "As a developer, I really appreciate how well-structured the new React components are. They’re modular, lightweight, and well-documented — exactly what I need to build quickly and efficiently. The styling system feels consistent, and performance is excellent. It’s one of the smoothest setups I’ve used for a modern web app.",
+    "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fG1hbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600"
+  },
+  {
+    "name": "Carlos Jiménez",
+    "job": "Data Analyst",
+    "comment": "The reporting tools are great, but exporting large datasets can still be a bit slow.",
+    "photo": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "David Chen",
+    "job": "Systems Administrator",
+    "comment": "I’ve been using this system for months now, and it’s one of the most stable platforms I’ve managed. The monitoring tools are precise and make it easy to identify and resolve issues before they escalate. The notifications are timely and well-configured. I’m particularly impressed by how secure everything feels out of the box.",
+    "photo": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Isabella Rossi",
+    "job": "Customer Success Manager",
+    "comment": "Customer support tools are top-notch now. Makes my job so much easier.",
+    "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    "name": "Sofia Petrova",
+    "job": "QA Engineer",
+    "comment": "The automation capabilities are powerful and have significantly reduced our manual testing time. I appreciate how customizable the workflows are — we can design tests that truly match our real use cases. I’d like to see better reporting on failed test runs, but overall, it’s a very dependable testing framework.",
+    "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80"
+  }
+]
