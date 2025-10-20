@@ -28,6 +28,23 @@ const isAuthenticated = async (
     if (!user) return next(new Error("unauthorized"));
 
     (req as unknown as UserRequest).user = user;
+
+    const payload = {
+      id,
+    };
+
+    const newToken = jwt.sign(payload, SECRET_JWT as string, {
+      expiresIn: "24h",
+    });
+
+    await User.findByIdAndUpdate(id, { token: newToken });
+
+    res.cookie("token", newToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+    });
     next();
   } catch (error) {
     next(error);
