@@ -29,8 +29,4 @@ app.use("/api/wallet", walletRoute);
 
 app.use("/api/transaction", transactionRoute);
 
-app.get("/api/operation", (req, res) => {
-  res.status(200).json({ message: "Hello!" });
-});
-
 export default app;

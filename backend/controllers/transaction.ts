@@ -2,7 +2,6 @@ import { Request, Response } from "express-serve-static-core";
 import { UserRequest } from "../types/user";
 import mongoose from "mongoose";
 import { JwtPayload } from "jsonwebtoken";
-import stripe from "@stripe/stripe-js";
 import Transaction from "../models/transaction";
 import { ctrlWrapper } from "../helper";
 import Wallet from "../models/wallet";
