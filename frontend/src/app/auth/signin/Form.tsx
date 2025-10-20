@@ -5,6 +5,10 @@ import InputAuth from "../components/InputAuth";
 import { useAppDispatch } from "@/app/redux/hooks";
 import { signin } from "@/app/redux/requests/authRequests";
 import { SigninUser } from "@/app/types";
+import { Eye, EyeClosed } from "lucide-react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { userError } from "@/app/redux/selectors";
 
 const Form = () => {
   const router = useRouter();
@@ -13,6 +17,8 @@ const Form = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  const error = useSelector(userError);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -20,24 +26,16 @@ const Form = () => {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    console.log({ email, password });
-
     const res = await dispatch(signin({ email, password } as SigninUser));
 
     if (res.meta.requestStatus === "fulfilled") {
       router.push("/cryptoboard");
+      toast.success(`Signed in successfully!`);
     }
-    //   const response = await fetch("/api/auth/login", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ email, password }),
-    //   });
 
-    //   if (response.ok) {
-    //     router.push("/profile");
-    //   } else {
-    //     // Handle errors
-    //   }
+    if (res.meta.requestStatus === "rejected") {
+      toast.error(error);
+    }
   }
 
   return (
@@ -57,9 +55,13 @@ const Form = () => {
           />
           <button
             type="button"
-            className="absolute top-1/2 right-1 w-5 h-5 bg-red-500 -translate-1/2"
+            className="absolute top-1/2 right-1 -translate-1/2"
             onClick={() => setShowPassword(!showPassword)}
-          ></button>
+          >
+            {showPassword ? <EyeClosed /> : <Eye />}
+          </button>
+          {/*             className="absolute top-1/2 right-1 w-5 h-5 bg-red-500 -translate-1/2"
+           */}
         </div>
         <button
           type="submit"
