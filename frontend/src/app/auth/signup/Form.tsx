@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import InputAuth from "../components/InputAuth";
 import { useAppDispatch } from "@/app/redux/hooks";
@@ -19,6 +19,12 @@ const Form = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const error = useSelector(userError);
+
+  const [address, setAddress] = useState("");
+
+  useEffect(() => {
+    setAddress(localStorage.getItem("address") || "");
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -57,14 +63,14 @@ const Form = () => {
           type="email"
           name="email"
           placeholder="Email"
-          value={localStorage.getItem("address") || ""}
+          value={address}
           required
         />
         <InputAuth
           type="text"
           name="name"
           placeholder="Name"
-          value={localStorage.getItem("address") || ""}
+          value={address}
           required
         />
         <div className="relative min-[768px]:w-[500px] min-[768px]:mx-auto min-[1440px]:w-[700px] ">
