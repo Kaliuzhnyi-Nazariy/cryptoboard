@@ -1,7 +1,5 @@
-import mongoose from "mongoose";
-
 export type TransactionReq = {
-  author?: string | mongoose.Types.ObjectId;
+  author?: string;
   transaction?: "buy" | "sell" | "topup" | "withdraw";
   moneyAmount: number;
   tokenSymbol?: string;
@@ -10,7 +8,7 @@ export type TransactionReq = {
 };
 
 export interface Transaction extends TransactionReq {
-  id: mongoose.Types.ObjectId;
+  id: string;
   [x: string]: any;
 }
 

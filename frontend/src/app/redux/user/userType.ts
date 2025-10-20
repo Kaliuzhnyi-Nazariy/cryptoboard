@@ -1,5 +1,3 @@
-import mongoose from "mongoose";
-
 export type UserState = {
   user: {
     name: string;
@@ -18,7 +16,7 @@ export type UserState = {
 };
 
 export type token = {
-  _id: mongoose.Types.ObjectId | string;
+  _id: string;
   name: string;
   purchases: { price: number; amount: number }[];
 };

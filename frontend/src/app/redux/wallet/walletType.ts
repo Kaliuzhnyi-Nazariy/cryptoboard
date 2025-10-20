@@ -1,7 +1,5 @@
-import mongoose from "mongoose";
-
 export interface IWallet {
-  owenr: mongoose.Types.ObjectId;
+  owenr: string;
   balance: number;
   currency: string;
   [x: string]: any;
