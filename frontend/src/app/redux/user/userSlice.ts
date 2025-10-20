@@ -1,11 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserState } from "./userType";
+import { token, UserState } from "./userType";
 import { signin, signout, signup } from "../requests/authRequests";
 import { IUser } from "@/app/types";
-import { deleteUser, getMe, updateUser } from "../requests/userRequests";
+import {
+  deleteUser,
+  getMe,
+  getTokens,
+  updateUser,
+} from "../requests/userRequests";
 
 const initialState: UserState = {
-  user: null,
+  user: {
+    name: "",
+    email: "",
+    createdAt: undefined,
+    tokens: [],
+    avatar: { link: "", name: "" },
+  },
   error: null,
   isLoading: false,
   isLoggedIn: false,
@@ -37,7 +48,12 @@ const userSlice = createSlice({
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
           state.isLoggedIn = true;
-          state.user = action.payload;
+          state.user = {
+            ...action.payload,
+            createdAt: action.payload.createdAt
+              ? new Date(action.payload.createdAt).toISOString()
+              : undefined,
+          };
         }
       )
       .addCase(signup.rejected, handleReject)
@@ -47,7 +63,12 @@ const userSlice = createSlice({
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
           state.isLoggedIn = true;
-          state.user = action.payload;
+          state.user = {
+            ...action.payload,
+            createdAt: action.payload.createdAt
+              ? new Date(action.payload.createdAt).toISOString()
+              : undefined,
+          };
         }
       )
       .addCase(signin.rejected, handleReject)
@@ -57,7 +78,10 @@ const userSlice = createSlice({
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
           state.isLoggedIn = false;
-          state.user = action.payload;
+          state.user = {
+            ...action.payload,
+            createdAt: undefined,
+          };
         }
       )
       .addCase(signout.rejected, handleReject)
@@ -67,7 +91,12 @@ const userSlice = createSlice({
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
           state.isLoggedIn = true;
-          state.user = action.payload;
+          state.user = {
+            ...action.payload,
+            createdAt: action.payload.createdAt
+              ? new Date(action.payload.createdAt).toISOString()
+              : undefined,
+          };
         }
       )
       .addCase(
@@ -86,8 +115,15 @@ const userSlice = createSlice({
         updateUser.fulfilled,
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
-          state.isLoggedIn = false;
-          state.user = action.payload;
+          state.isLoggedIn = true;
+          console.log(action.payload);
+
+          state.user = {
+            ...action.payload,
+            createdAt: action.payload.createdAt
+              ? new Date(action.payload.createdAt).toISOString()
+              : undefined,
+          };
         }
       )
       .addCase(updateUser.rejected, handleReject)
@@ -97,7 +133,18 @@ const userSlice = createSlice({
         state.isLoggedIn = false;
         state.user = initialState.user;
       })
-      .addCase(deleteUser.rejected, handleReject);
+      .addCase(deleteUser.rejected, handleReject)
+      .addCase(getTokens.pending, (state: UserState) => {
+        state.error = null;
+      })
+      .addCase(
+        getTokens.fulfilled,
+        (state: UserState, action: PayloadAction<{ tokens: token[] }>) => {
+          state.isLoading = false;
+          state.user.tokens = action.payload.tokens;
+        }
+      )
+      .addCase(getTokens.rejected, handleReject);
   },
 });
 
