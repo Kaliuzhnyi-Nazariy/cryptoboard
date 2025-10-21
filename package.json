@@ -38,6 +38,7 @@
     "@types/gravatar": "^1.8.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/multer": "^2.0.0",
+    "@types/node": "^24.9.1",
     "concurrently": "^9.2.1",
     "daisyui": "^5.1.6",
     "nodemon": "^3.1.10"
