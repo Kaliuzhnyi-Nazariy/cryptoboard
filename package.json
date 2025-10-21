@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "nodemon backend/server.ts",
     "fulldev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev\"",
-    "backend:build": " tsc -p tsconfig.json",
+    "backend:build": "npm install && tsc -p tsconfig.json",
     "build": "npm run backend:build",
-    "start": "npm install && set NODE_ENV=production && node dist/backend/server.js"
+    "start": " set NODE_ENV=production && node dist/backend/server.js"
   },
   "keywords": [],
   "author": "",
