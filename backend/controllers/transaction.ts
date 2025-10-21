@@ -1,5 +1,5 @@
 import { Request, Response } from "express-serve-static-core";
-import { UserRequest } from "../types/user";
+import { Token, UserRequest } from "../types/user";
 import mongoose from "mongoose";
 import { JwtPayload } from "jsonwebtoken";
 import Transaction from "../models/transaction";
@@ -166,7 +166,7 @@ const buyTransaction = async (
 
   if (!user) return res.status(401).json({ message: "Unauthorized" });
 
-  const isUserTokens = user.tokens.some((t) => t.name === tokenSymbol);
+  const isUserTokens = user.tokens.some((t: Token) => t.name === tokenSymbol);
 
   if (isUserTokens) {
     await User.findOneAndUpdate(
@@ -211,7 +211,7 @@ const sellTransaction = async (
   }
 
   const userTokens = user.tokens;
-  const tokenIndex = userTokens.findIndex((t) => t.name == tokenSymbol);
+  const tokenIndex = userTokens.findIndex((t: Token) => t.name == tokenSymbol);
   const purchases = userTokens[tokenIndex].purchases;
 
   // check if there is enough token on user acc

@@ -11,6 +11,7 @@ export interface IUser {
     link: string;
     name: string;
   };
+  tokens: Token[];
   [x: string]: any;
 }
 
@@ -35,3 +36,12 @@ export type UpdUser = {
   password: string;
   avatar: string | File;
 };
+
+type Purchase = {
+  price: Number;
+  amount: Number;
+};
+export interface Token {
+  name: string;
+  purchases: Purchase[];
+}
