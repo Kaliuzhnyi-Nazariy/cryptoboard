@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "nodemon backend/server.ts",
     "fulldev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev\"",
-    "backend:build": "npm i tsc -p tsconfig.json",
-    "build": "npm ci --include=dev && npm run backend:build",
+    "backend:build": "tsc -p tsconfig.json",
+    "build": "npm run backend:build",
     "start": " node dist/backend/server.js"
   },
   "keywords": [],
@@ -29,7 +29,9 @@
     "mongoose": "^8.18.0",
     "multer": "^2.0.2",
     "stripe": "^18.5.0",
-    "tailwindcss": "^4.1.12"
+    "tailwindcss": "^4.1.12",
+    "tsc": "^2.0.4",
+    "tsconfig.json": "^1.0.11"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.6",
@@ -40,6 +42,7 @@
     "@types/multer": "^2.0.0",
     "concurrently": "^9.2.1",
     "daisyui": "^5.1.6",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "typescript": "^5.9.3"
   }
 }
