@@ -1,6 +1,4 @@
 import dotenv from "dotenv";
-import express from "express";
-import path from "path";
 dotenv.config();
 
 import mongoose from "mongoose";
