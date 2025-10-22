@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "nodemon backend/server.ts",
     "fulldev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev\"",
-    "backend:build": "tsc -p tsconfig.json",
-    "build": "npm run backend:build",
+    "backend:build": "npm i tsc -p tsconfig.json",
+    "build": "npm ci --include=dev && npm run backend:build",
     "start": " node dist/backend/server.js"
   },
   "keywords": [],
