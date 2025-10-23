@@ -1,32 +1,32 @@
 import express from "express";
-import cors from "cors";
-import authRoute from "./route/auth";
-import userRoute from "./route/user";
-import walletRoute from "./route/wallet";
-import transactionRoute from "./route/transaction";
-import bodyParser from "body-parser";
+// import cors from "cors";
+// import authRoute from "./route/auth";
+// import userRoute from "./route/user";
+// import walletRoute from "./route/wallet";
+// import transactionRoute from "./route/transaction";
+// import bodyParser from "body-parser";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "*"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3000", "*"],
+//     credentials: true,
+//   })
+// );
 
-app.use(express.json());
+// app.use(express.json());
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/api/auth", authRoute);
+// app.use("/api/auth", authRoute);
 
-app.use("/api/user", userRoute);
+// app.use("/api/user", userRoute);
 
-app.use("/api/wallet", walletRoute);
+// app.use("/api/wallet", walletRoute);
 
-app.use("/api/transaction", transactionRoute);
+// app.use("/api/transaction", transactionRoute);
 
 export default app;
