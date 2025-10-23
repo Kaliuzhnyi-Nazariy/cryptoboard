@@ -6,7 +6,7 @@
     "dev": "nodemon backend/server.ts",
     "fulldev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev\"",
     "backend:build": "tsc -p tsconfig.json",
-    "build": "npm i && npm run backend:build",
+    "build": "npm i && set NODE_ENV=production && npm run backend:build",
     "start": " node dist/backend/server.js"
   },
   "keywords": [],
