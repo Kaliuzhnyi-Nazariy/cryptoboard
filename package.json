@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon backend/server.ts",
     "fulldev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev\"",
-    "frontend:build": "npm install --prefix frontend && npm run build --prefix frontend",
+    "frontend:build": "npm install --prefix frontend && npm run build --prefix frontend && tsc -p frontend/tsconfig.json",
     "backend:build": "tsc -p tsconfig.json",
     "build": "npm run frontend:build && npm run backend:build",
     "start": "set NODE_ENV=production && node dist/backend/server.js"

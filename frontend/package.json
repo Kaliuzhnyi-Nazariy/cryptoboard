@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build --turbopack && next export",
     "start": "next start",
     "lint": "eslint"
   },
@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.8.2",
     "@tanstack/react-query": "^5.85.9",
     "axios": "^1.11.0",
+    "cryptoboard": "file:..",
     "jwt-decode": "^4.0.0",
     "keen-slider": "^6.8.6",
     "lucide-react": "^0.542.0",
