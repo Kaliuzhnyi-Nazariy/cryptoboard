@@ -9,10 +9,10 @@ import app from "./app";
 const { PORT, DB_HOST } = process.env;
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.use(express.static(path.join(__dirname, "../frontend")));
 
   app.all("/{*any}", (_req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+    res.sendFile(path.resolve(__dirname, "../frontend/index.html"));
   });
 }
 
