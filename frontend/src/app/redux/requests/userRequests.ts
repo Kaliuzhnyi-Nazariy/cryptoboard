@@ -18,7 +18,7 @@ export const getMe = createAsyncThunk<
     if (axios.isAxiosError(error)) {
       localStorage.removeItem("page");
       return rejectWithValue({
-        message: error.response?.data?.message || "Signup failed",
+        message: error.response?.data?.message || "User not found!",
       });
     }
     return rejectWithValue({ message: "Unexpected error occurred" });
@@ -41,9 +41,11 @@ export const updateUser = createAsyncThunk<
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
-      // console.log(error);
       return rejectWithValue({
-        message: error.response?.data?.message || "Signup failed",
+        message:
+          error.response?.data?.message ||
+          error.response?.data ||
+          "Update failed",
       });
     }
     return rejectWithValue({ message: "Unexpected error occurred" });
@@ -61,7 +63,7 @@ export const deleteUser = createAsyncThunk<
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
       return rejectWithValue({
-        message: error.response?.data?.message || "Signup failed",
+        message: error.response?.data?.message || "Delete failed",
       });
     }
     return rejectWithValue({ message: "Unexpected error occurred" });
@@ -79,7 +81,7 @@ export const getTokens = createAsyncThunk<
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
       return rejectWithValue({
-        message: error.response?.data?.message || "Signup failed",
+        message: error.response?.data?.message || "Sth went wrong",
       });
     }
     return rejectWithValue({ message: "Unexpected error occurred" });

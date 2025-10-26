@@ -41,7 +41,7 @@ export const signin = createAsyncThunk<
     if (axios.isAxiosError(error)) {
       // console.log(error);
       return rejectWithValue({
-        message: error.response?.data?.message || "Signup failed",
+        message: error.response?.data?.message || "Signin failed",
       });
     }
     return rejectWithValue({ message: "Unexpected error occurred" });
@@ -68,7 +68,7 @@ export const signout = createAsyncThunk<
     if (axios.isAxiosError(error)) {
       // console.log(error);
       return rejectWithValue({
-        message: error.response?.data?.message || "Signup failed",
+        message: error.response?.data?.message || "Signout failed",
       });
     }
     return rejectWithValue({ message: "Unexpected error occurred" });

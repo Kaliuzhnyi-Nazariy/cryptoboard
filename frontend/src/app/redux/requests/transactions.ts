@@ -32,7 +32,7 @@ export const buyTransaction = createAsyncThunk<
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
       return rejectWithValue({
-        message: error.response?.data?.message || "Signup failed",
+        message: error.response?.data?.message || "Transaction failed",
       });
     }
     return rejectWithValue({ message: "Unexpected error occurred" });
@@ -50,7 +50,7 @@ export const sellTransaction = createAsyncThunk<
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
       return rejectWithValue({
-        message: error.response?.data?.message || "Signup failed",
+        message: error.response?.data?.message || "Transaction failed",
       });
     }
     return rejectWithValue({ message: "Unexpected error occurred" });
@@ -106,7 +106,7 @@ export const getTransaction = createAsyncThunk<
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
       return rejectWithValue({
-        message: error.response?.data?.message || "Signup failed",
+        message: error.response?.data?.message || "Something went wrong!",
       });
     }
     return rejectWithValue({ message: "Unexpected error occurred" });
