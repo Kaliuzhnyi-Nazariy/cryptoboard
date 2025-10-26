@@ -87,7 +87,6 @@ const UpdForm = () => {
       <h2 className="mb-4 min-[768px]:mb-5 min-[1440px]:mb-6 uppercase  ">
         Update your info!
       </h2>
-      <p>{photo}</p>
       <form
         onSubmit={updSubmit}
         className="flex flex-col gap-4 min-[768px]:gap-5 min-[1440px]:gap-6 min-[1440px]:w-full min-[1440px]:flex-row min-[1440px]:justify-around "
@@ -102,7 +101,7 @@ const UpdForm = () => {
             } group-hover:block group-active:block cursor-pointer transition-all min-[1440px]:w-40 min-[1440px]:h-40 min-[1440px]:top-1/2 min-[1440px]:left-1/2 min-[1440px]:-translate-1/2 `}
             onChange={(e) => photoValidator(e.currentTarget.files)}
           />
-          {photo ?? useravatar ? (
+          {/* {photo ?? useravatar ? (
             <Image
               src={(photo || useravatar)!}
               alt={`${username}'s avatar`}
@@ -110,6 +109,24 @@ const UpdForm = () => {
               height={80}
               sizes="(min-width: 1440px) 160px, 80px"
               className="rounded-full object-center min-[1440px]:size-40 "
+            />
+          ) : (
+            <></>
+          )} */}
+          {photo ? (
+            <img
+              src={photo}
+              alt="Preview"
+              className="rounded-full object-center min-[1440px]:size-40"
+            />
+          ) : useravatar ? (
+            <Image
+              src={useravatar}
+              alt={`${username}'s avatar`}
+              width={80}
+              height={80}
+              sizes="(min-width: 1440px) 160px, 80px"
+              className="rounded-full object-center min-[1440px]:size-40"
             />
           ) : (
             <></>
