@@ -141,6 +141,9 @@ const buyTransaction = async (
 
   const walletBalance = await Wallet.findOne({ owner: id });
 
+  if (!walletBalance)
+    return res.status(404).json({ message: "Wallet not found!" });
+
   if (!moneyAmount)
     return res.status(400).json({ message: "No money you sent!" });
 
@@ -209,6 +212,11 @@ const sellTransaction = async (
   if (!user) {
     return res.status(401).json({ message: "User not found!" });
   }
+
+  const userWallet = await Wallet.findOne({ owner: id });
+
+  if (!userWallet)
+    return res.status(404).json({ message: "Wallet not found!" });
 
   const userTokens = user.tokens;
   const tokenIndex = userTokens.findIndex((t: Token) => t.name == tokenSymbol);
