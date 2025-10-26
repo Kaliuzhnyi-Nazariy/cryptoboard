@@ -5,6 +5,7 @@ import { avatarLink, email, name } from "@/app/redux/selectors";
 import { Eye, EyeClosed } from "lucide-react";
 import Image from "next/image";
 import React, { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 const UpdForm = () => {
@@ -63,11 +64,17 @@ const UpdForm = () => {
 
     const isFormatValid = validFormats.includes(file[0].type);
 
-    if (!isFormatValid) throw new Error("Wrong format!");
+    if (!isFormatValid) {
+      toast.error("Wrong format!");
+      throw new Error("Wrong format!");
+    }
 
     const maxSize = 1 * 1024 * 1024;
 
-    if (file[0].size > maxSize) throw new Error("File is too large!");
+    if (file[0].size > maxSize) {
+      toast.error("File is too large!");
+      throw new Error("File is too large!");
+    }
 
     const previewUrl = URL.createObjectURL(file[0]);
 
@@ -80,6 +87,7 @@ const UpdForm = () => {
       <h2 className="mb-4 min-[768px]:mb-5 min-[1440px]:mb-6 uppercase  ">
         Update your info!
       </h2>
+      <p>{photo}</p>
       <form
         onSubmit={updSubmit}
         className="flex flex-col gap-4 min-[768px]:gap-5 min-[1440px]:gap-6 min-[1440px]:w-full min-[1440px]:flex-row min-[1440px]:justify-around "
