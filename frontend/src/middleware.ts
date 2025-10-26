@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 // import jwt from "jsonwebtoken";
-import { jwtDecode } from "jwt-decode";
+import { decodeJwt } from "jose";
 
 const protectedRoutes = [
   "/cryptoboard",
@@ -13,6 +13,7 @@ const protectedRoutes = [
   "/settings",
   "/help",
 ];
+
 const publicRoutes = ["/auth/signin", "/auth/signup", "/"];
 
 export function middleware(req: NextRequest) {
@@ -30,7 +31,7 @@ export function middleware(req: NextRequest) {
 
   if (token) {
     try {
-      const decoded = jwtDecode(token) as { exp?: number };
+      const decoded = decodeJwt(token) as { exp?: number };
       if (decoded?.exp && decoded.exp * 1000 < Date.now()) {
         isExpired = true;
       }
