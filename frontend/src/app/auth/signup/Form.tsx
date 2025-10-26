@@ -23,6 +23,7 @@ const Form = () => {
   const [address, setAddress] = useState("");
 
   useEffect(() => {
+    // console.log(localStorage.getItem("address"));
     setAddress(localStorage.getItem("address") || "");
   }, []);
 
@@ -54,7 +55,7 @@ const Form = () => {
 
   return (
     <div className="flex flex-col justify-center items-center w-full h-full gap-5">
-      <h2>Sign up</h2>
+      <h2>Sign up {address}</h2>
       <form
         onSubmit={handleSubmit}
         className="gap-3 flex flex-col w-full min-[768px]:gap-5"

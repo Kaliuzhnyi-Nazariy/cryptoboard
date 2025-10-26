@@ -32,7 +32,7 @@ const InputAuth = ({
         }
       }
     }
-  }, []);
+  }, [name, value]);
 
   return (
     <input
