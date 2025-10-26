@@ -35,8 +35,10 @@ const CoinListItem = ({ coin }: { coin: Coin }) => {
           <div className="relative size-10 min-[768px]:size-6">
             <Image src={coin.image} alt={""} fill className="object-center" />
           </div>
-          <div className="mts flex flex-col items-start">
-            <p>{coin.name}</p>
+          <div className="mts flex flex-col items-start ">
+            <p className="overflow-ellipsis w-3/5 overflow-hidden">
+              {coin.name}
+            </p>
             <h5 className="text-[var(--black80)]">{coin.symbol}</h5>
           </div>
         </div>
@@ -50,7 +52,7 @@ const CoinListItem = ({ coin }: { coin: Coin }) => {
           <div className="relative size-10 min-[768px]:size-6">
             <Image src={coin.image} alt={""} fill className="object-center" />
           </div>
-          <p className="mts font-semibold overflow-hidden overflow-ellipsis  text-nowrap">
+          <p className="mts font-semibold overflow-hidden overflow-ellipsis w-3/5 text-nowrap">
             {coin.name}
           </p>
         </div>
