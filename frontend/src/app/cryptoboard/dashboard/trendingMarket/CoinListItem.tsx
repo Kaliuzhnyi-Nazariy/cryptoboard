@@ -36,7 +36,7 @@ const CoinListItem = ({ coin }: { coin: Coin }) => {
             <Image src={coin.image} alt={""} fill className="object-center" />
           </div>
           <div className="mts flex flex-col items-start ">
-            <p className="overflow-ellipsis w-3/5 overflow-hidden">
+            <p className="overflow-ellipsis w-3/5 overflow-hidden text-nowrap">
               {coin.name}
             </p>
             <h5 className="text-[var(--black80)]">{coin.symbol}</h5>
