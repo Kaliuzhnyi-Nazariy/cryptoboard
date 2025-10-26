@@ -12,7 +12,7 @@ const SearchBar = ({
 }) => {
   return (
     <>
-      <label className="input w-30 min-[1440px]:w-60 py-1.5 rounded-[6px] outline outline-[var(--black40)] flex bg-transparent">
+      <label className="input w-30 min-[1440px]:w-60 py-1.5 rounded-md border border-[var(--black40)] flex bg-transparent">
         <svg
           className="h-[1em] opacity-50"
           xmlns="http://www.w3.org/2000/svg"
