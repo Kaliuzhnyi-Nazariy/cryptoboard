@@ -16,7 +16,7 @@ const NavLayoutComponent = ({ children }: { children: React.ReactNode }) => {
         {/* <div className="flex flex-col flex-2 w-full items-center justify-start text-center min-[768px]:p-4 min-[1440px]:p-6 overflow-y-auto bg-blue-900">
           {children}
         </div> */}
-        <div className="flex flex-col flex-2 w-full h-auto items-center justify-start text-center min-[768px]:p-4 min-[1440px]:p-6 overflow-y-auto">
+        <div className="flex flex-col flex-2 w-full h-auto items-center justify-start text-center min-[768px]:p-4 min-[1440px]:p-6 overflow-y-auto min-[768px]:h-[87vh] ">
           {children}
         </div>
       </div>
