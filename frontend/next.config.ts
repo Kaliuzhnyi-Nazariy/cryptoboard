@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   output: "export",
   distDir: "../dist/frontend",
   images: {
+    unoptimized: true,
     domains: [
       "coin-images.coingecko.com",
       "www.gravatar.com",
