@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://cryptoboard-unor.onrender.com/"],
+    origin: ["http://localhost:3000", "https://cryptoboard-unor.onrender.com"],
     credentials: true,
   })
 );
