@@ -8,13 +8,7 @@ import bodyParser from "body-parser";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://cryptoboard-unor.onrender.com"],
-    methods: "PUT, GET, POST",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
