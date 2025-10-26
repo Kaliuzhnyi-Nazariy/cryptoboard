@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${yukitaSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--black20)] text-[var(--black100)] flex flex-col min-[768px]:overflow-y-hidden`}
+        className={`${yukitaSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--black20)] text-[var(--black100)] flex flex-col `}
       >
         <ReduxProvider>
           <GetUserLayout>
