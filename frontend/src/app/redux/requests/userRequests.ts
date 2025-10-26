@@ -35,7 +35,7 @@ export const updateUser = createAsyncThunk<
     // console.log(userData?.avatar);
     const { data } = await axios.put<IUser>("/user/update", userData, {
       withCredentials: true,
-      headers: { "Content-Type": "multipart/form-data" },
+      // headers: { "Content-Type": "multipart/form-data" },
     });
     // console.log(data);
     return data;
