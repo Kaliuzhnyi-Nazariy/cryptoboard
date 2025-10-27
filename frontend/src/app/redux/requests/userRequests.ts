@@ -4,7 +4,7 @@ import { api } from "./api";
 import axios from "axios";
 import { token } from "../user/userType";
 
-axios.defaults.baseURL = "http://localhost:3001/api";
+// axios.defaults.baseURL = "http://localhost:3001/api";
 
 export const getMe = createAsyncThunk<
   IUser,
