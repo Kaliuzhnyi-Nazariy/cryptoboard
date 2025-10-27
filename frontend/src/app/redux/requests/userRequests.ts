@@ -31,7 +31,7 @@ export const updateUser = createAsyncThunk<
   { rejectValue: { message: string } }
 >("/user/update", async (userData, { rejectWithValue }) => {
   try {
-    // console.log({ userData });
+    console.log({ userData });
     // console.log(userData?.avatar);
     const { data } = await axios.put<IUser>("/user/update", userData, {
       withCredentials: true,
@@ -41,6 +41,7 @@ export const updateUser = createAsyncThunk<
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
+      console.log(error);
       return rejectWithValue({
         message:
           error.response?.data?.message ||
