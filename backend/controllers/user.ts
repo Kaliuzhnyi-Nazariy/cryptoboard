@@ -35,6 +35,8 @@ const updateUser = async (req: Request, res: Response) => {
     | { id: string; email: string; avatar: string }
     | JwtPayload;
 
+  console.log({ userAvatar });
+
   // console.log(id, userEmail, userAvatar);
 
   const user = await User.findById<IUser>(id);
