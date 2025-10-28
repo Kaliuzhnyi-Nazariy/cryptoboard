@@ -93,8 +93,8 @@ const updateUser = async (req: Request, res: Response) => {
       name,
       password: hashedPassword,
       avatar: {
-        link: avatarRes.link || avatarRes.secure_url,
-        name: avatarRes.name || avatarRes.original_filename,
+        link: avatarRes.link || avatarRes.secure_url || "",
+        name: avatarRes.name || avatarRes.original_filename || "",
       },
     },
     { new: true }
