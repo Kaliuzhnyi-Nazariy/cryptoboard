@@ -11,7 +11,11 @@ const { PORT, DB_HOST } = process.env;
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend")));
 
-  app.all("/{*any}", (_req, res) => {
+  app.all("/{*any}", (req, res) => {
+    if (req.path.startsWith("/api")) {
+      // Let API routes handle it
+      return res.status(404).json({ message: "API route not found" });
+    }
     res.sendFile(path.resolve(__dirname, "../frontend/index.html"));
   });
 }
