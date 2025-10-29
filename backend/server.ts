@@ -12,11 +12,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
   app.all("/{*any}", (req, res) => {
-    if (req.path.startsWith("/api")) {
-      // Let API routes handle it
-      return res.status(404).json({ message: "API route not found" });
-    }
-    res.sendFile(path.resolve(__dirname, "../frontend/dist/server/app"));
+    res.sendFile(
+      path.resolve(__dirname, "../frontend/dist/server/app/index.html")
+    );
   });
 }
 
