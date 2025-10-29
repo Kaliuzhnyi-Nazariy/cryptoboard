@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
       // Let API routes handle it
       return res.status(404).json({ message: "API route not found" });
     }
-    res.sendFile(path.resolve(__dirname, "../frontend/dist"));
+    res.sendFile(path.resolve(__dirname, "../frontend/dist/server/app"));
   });
 }
 
