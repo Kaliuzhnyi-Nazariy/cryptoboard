@@ -4,7 +4,7 @@ import { api } from "./api";
 import axios from "axios";
 import { token } from "../user/userType";
 
-axios.defaults.baseURL = "https://cryptoboard-unor.onrender.com/api";
+// axios.defaults.baseURL = "https://cryptoboard-unor.onrender.com/api";
 
 export const getMe = createAsyncThunk<
   IUser,
