@@ -1,3 +1,11 @@
+// TO-DO:
+// 1. Correct redirecting
+// 2. Correct setting the link after redirect
+
+// Possibly the error on backend...
+
+// MAIN PROBLEM: After reloading the page it returns index.html
+
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 // import jwt from "jsonwebtoken";
@@ -43,6 +51,9 @@ export function middleware(req: NextRequest) {
 
   // console.log({ isProtectedRoute });
   // console.log({ isPublicRoute });
+
+  console.log({ token });
+  console.log({ isExpired });
 
   if (isProtectedRoute && isExpired) {
     return NextResponse.redirect(new URL("/auth/signin", req.url));
