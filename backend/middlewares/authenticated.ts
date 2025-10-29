@@ -15,9 +15,11 @@ const isAuthenticated = async (
     .filter((cook) => cook.includes("token="))[0]
     .split("=")[1];
 
-  const authorization = token || "";
+  const authorization = token;
 
-  if (authorization === "") throw new Error("unauthorized");
+  if (!authorization) throw new Error("Unauthorized");
+
+  console.log({ authorization });
 
   try {
     const { id } = jwt.verify(authorization, SECRET_JWT as string) as
