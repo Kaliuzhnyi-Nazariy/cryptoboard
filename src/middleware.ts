@@ -31,6 +31,8 @@ export function middleware(req: NextRequest) {
 
   const token = req.cookies.get("token")?.value;
 
+  console.log({ token });
+
   if (isProtectedRoute && !token) {
     return NextResponse.redirect(new URL("/auth/signin", req.url));
   }
