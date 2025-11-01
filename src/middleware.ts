@@ -29,6 +29,8 @@ export function middleware(req: NextRequest) {
   const isProtectedRoute = protectedRoutes.includes(path);
   const isPublicRoute = publicRoutes.includes(path);
 
+  console.log({ req });
+
   const token = req.cookies.get("token")?.value;
 
   if (!token) {
