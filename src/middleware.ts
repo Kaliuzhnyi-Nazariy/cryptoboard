@@ -34,6 +34,7 @@ export function middleware(req: NextRequest) {
   if (!token) {
     console.log("set-cookie");
     console.log(req.headers);
+    console.log(req.headers.getSetCookie());
   }
 
   console.log({ token });
