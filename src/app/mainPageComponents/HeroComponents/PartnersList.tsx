@@ -49,7 +49,7 @@ const PartnersList = () => {
         </Link>
       </li>
       <li className="w-1/2 min-[1024px]:w-1/5 flex justify-center hover:scale-120 transition-transform duration-250">
-        <Link href="" target="_blank">
+        <Link href="https://www.bitmex.com/" target="_blank">
           <Image
             src="/bitmexLogo.png"
             alt="BitMEX logo"
