@@ -31,6 +31,11 @@ export function middleware(req: NextRequest) {
 
   const token = req.cookies.get("token")?.value;
 
+  if (!token) {
+    console.log("set-cookie");
+    console.log(req.headers);
+  }
+
   console.log({ token });
 
   if (isProtectedRoute && !token) {
