@@ -30,11 +30,12 @@ export function middleware(req: NextRequest) {
   const isProtectedRoute = protectedRoutes.includes(path);
   const isPublicRoute = publicRoutes.includes(path);
 
-  console.log({ req });
+  // console.log({ req });
 
   async function tryTOFindToken() {
     const cookieStore = await cookies();
     const tryToken = cookieStore.get("token");
+    console.log({ cookieStore });
     console.log({ tryToken });
   }
 
@@ -48,7 +49,7 @@ export function middleware(req: NextRequest) {
     console.log(req.headers.getSetCookie());
   }
 
-  console.log({ token });
+  // console.log({ token });
 
   if (isProtectedRoute && !token) {
     return NextResponse.redirect(new URL("/auth/signin", req.url));
@@ -71,8 +72,8 @@ export function middleware(req: NextRequest) {
   // console.log({ isProtectedRoute });
   // console.log({ isPublicRoute });
 
-  console.log({ token });
-  console.log({ isExpired });
+  // console.log({ token });
+  // console.log({ isExpired });
 
   if (isProtectedRoute && isExpired) {
     return NextResponse.redirect(new URL("/auth/signin", req.url));
