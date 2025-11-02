@@ -33,8 +33,9 @@ export function middleware(req: NextRequest) {
   console.log({ req });
 
   async function tryTOFindToken() {
-    const tyrToken = await cookies();
-    console.log({ tyrToken });
+    const cookieStore = await cookies();
+    const tryToken = cookieStore.get("token");
+    console.log({ tryToken });
   }
 
   tryTOFindToken();
