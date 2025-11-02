@@ -10,6 +10,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 // import jwt from "jsonwebtoken";
 import { decodeJwt } from "jose";
+import { cookies } from "next/headers";
 
 const protectedRoutes = [
   "/cryptoboard",
@@ -30,6 +31,13 @@ export function middleware(req: NextRequest) {
   const isPublicRoute = publicRoutes.includes(path);
 
   console.log({ req });
+
+  async function tryTOFindToken() {
+    const tyrToken = await cookies();
+    console.log({ tyrToken });
+  }
+
+  tryTOFindToken();
 
   const token = req.cookies.get("token")?.value;
 
