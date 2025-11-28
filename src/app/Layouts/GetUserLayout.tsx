@@ -1,30 +1,28 @@
 "use client";
 
-import { useEffect } from "react";
-import { useAppDispatch } from "../redux/hooks";
-import { getMe } from "../redux/requests/userRequests";
 import { useSelector } from "react-redux";
 import { isLoading } from "../redux/selectors";
+import useAuthMiddleware from "./helper/authMiddleware";
 
 const GetUserLayout = ({ children }: { children: React.ReactNode }) => {
-  const dispatch = useAppDispatch();
   const loading = useSelector(isLoading);
 
-  useEffect(() => {
-    dispatch(getMe());
-  }, [dispatch]);
+  const { loadingUser } = useAuthMiddleware();
 
-  return (
-    <>
-      {loading ? (
-        <div className="w-full  flex items-center justify-center">
-          Loadnig...
-        </div>
-      ) : (
-        <>{children}</>
-      )}
-    </>
-  );
+  if (loadingUser) {
+    return <h1>loading...</h1>;
+  } else
+    return (
+      <>
+        {loading ? (
+          <div className="w-full  flex items-center justify-center">
+            Loadnig...
+          </div>
+        ) : (
+          <>{children}</>
+        )}
+      </>
+    );
 };
 
 export default GetUserLayout;
