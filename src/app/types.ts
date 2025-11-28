@@ -13,7 +13,7 @@ export interface SignupUser extends SigninUser {
 export interface IUser {
   name: string;
   email: string;
-  token?: string;
+  token: string | null;
   tokens: token[];
   // tokens: token[] | undefined;
   // avatar: string;
