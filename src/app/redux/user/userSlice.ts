@@ -17,6 +17,7 @@ const initialState: UserState = {
     tokens: [],
     avatar: { link: "", name: "" },
   },
+  token: null,
   error: null,
   isLoading: false,
   isLoggedIn: false,
@@ -48,12 +49,14 @@ const userSlice = createSlice({
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
           state.isLoggedIn = true;
+          const { token, ...user } = action.payload;
           state.user = {
-            ...action.payload,
+            ...user,
             createdAt: action.payload.createdAt
               ? new Date(action.payload.createdAt).toISOString()
               : undefined,
           };
+          state.token = token;
         }
       )
       .addCase(signup.rejected, handleReject)
@@ -63,12 +66,14 @@ const userSlice = createSlice({
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
           state.isLoggedIn = true;
+          const { token, ...user } = action.payload;
           state.user = {
-            ...action.payload,
+            ...user,
             createdAt: action.payload.createdAt
               ? new Date(action.payload.createdAt).toISOString()
               : undefined,
           };
+          state.token = token;
         }
       )
       .addCase(signin.rejected, handleReject)
@@ -78,10 +83,12 @@ const userSlice = createSlice({
         (state: UserState, action: PayloadAction<IUser>) => {
           state.isLoading = false;
           state.isLoggedIn = false;
+          const { token, ...user } = action.payload;
           state.user = {
-            ...action.payload,
+            ...user,
             createdAt: undefined,
           };
+          state.token = token;
         }
       )
       .addCase(signout.rejected, handleReject)

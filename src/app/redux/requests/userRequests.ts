@@ -1,17 +1,26 @@
 import { IUser, UpdUser } from "@/app/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { api } from "./api";
+import { api, setHeader } from "./api";
 import axios from "axios";
-import { token } from "../user/userType";
+import { token, UserState } from "../user/userType";
+import { RootState } from "../store";
 
 // axios.defaults.baseURL = "https://cryptoboard-unor.onrender.com/api";
 
 export const getMe = createAsyncThunk<
   IUser,
   void,
-  { rejectValue: { message: string } }
->("/user/getme", async (_, { rejectWithValue }) => {
+  { rejectValue: { message: string }; state: RootState }
+>("/user/getme", async (_, { rejectWithValue, getState }) => {
+  const state = getState();
+  const persistToken = state.user.token;
+
+  if (persistToken === null) {
+    return rejectWithValue({ message: "Unauthorized!" });
+  }
+
   try {
+    setHeader(persistToken);
     const { data } = await api.get<IUser>("/user/me");
     return data;
   } catch (error: any) {
@@ -31,7 +40,7 @@ export const updateUser = createAsyncThunk<
   { rejectValue: { message: string } }
 >("/user/update", async (userData, { rejectWithValue }) => {
   try {
-    console.log({ userData });
+    // console.log({ userData });
     // console.log(userData?.avatar);
     const { data } = await axios.put<IUser>("/user/update", userData, {
       withCredentials: true,
