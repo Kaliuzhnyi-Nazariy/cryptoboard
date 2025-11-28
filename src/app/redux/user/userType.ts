@@ -10,6 +10,7 @@ export type UserState = {
       name: string;
     };
   };
+  token: string | null;
   isLoggedIn: boolean;
   error: null | string;
   isLoading: boolean;
