@@ -1,6 +1,6 @@
 import { IUser, UpdUser } from "@/app/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { api, setHeader } from "./api";
+import { api, cleanHeader, setHeader } from "./api";
 import axios from "axios";
 import { token, UserState } from "../user/userType";
 import { RootState } from "../store";
@@ -69,6 +69,7 @@ export const deleteUser = createAsyncThunk<
 >("/user/delete", async (_, { rejectWithValue }) => {
   try {
     const { data } = await api.delete<IUser>("/user/delete");
+    cleanHeader();
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {

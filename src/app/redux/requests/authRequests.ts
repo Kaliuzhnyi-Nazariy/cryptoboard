@@ -1,4 +1,4 @@
-import { api, setHeader } from "./api";
+import { api, cleanHeader, setHeader } from "./api";
 import { IUser, SigninUser, SignupUser } from "@/app/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -70,6 +70,7 @@ export const signout = createAsyncThunk<
 >("/auth/signout", async (_: void, { rejectWithValue }) => {
   try {
     const { data } = await api.post<IUser>("/auth/signout");
+    cleanHeader();
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
