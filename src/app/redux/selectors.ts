@@ -8,6 +8,8 @@ export const isLoading = (state: RootState) => state.user.isLoading;
 export const isLoggedIn = (state: RootState) => state.user.isLoggedIn;
 export const userError = (state: RootState) => state.user.error;
 
+export const userToken = (state: RootState) => state.user.token;
+
 export const user = (state: RootState) => state.user;
 // export const userCreateYear = (state: RootState) => state.user.user?.createdAt;
 // export const userCreateYear = (state: RootState) => {
